@@ -38,11 +38,10 @@ public class Principal extends BaseGameActivity {
 	@Override
 	public Scene onLoadScene() {
 		final Scene scene = new Scene(2);
-		scene.setBackground(new ColorBackground(255, 0, 0));
+		scene.setBackground(new ColorBackground(0, 0, 0));
 		Player player1 = new Player();
-		final Sprite brick = new Sprite(30, 30, this.brickTextureRegion);
-		scene.getTopLayer().addEntity(brick);
-
+		Player player2 = new Player();
+		buildTower(player1, scene);
 		return scene;
 	}
 
@@ -50,5 +49,12 @@ public class Principal extends BaseGameActivity {
 	public void onLoadComplete() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	private void buildTower(Player player, Scene scene) {
+		for(int i = 1 ; i <= player.getHeight(); i++ ) {
+			Sprite brick = new Sprite(30, 400 - (16*i), this.brickTextureRegion);
+			scene.getTopLayer().addEntity(brick);
+		}
 	}
 }
